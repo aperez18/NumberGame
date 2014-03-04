@@ -41,17 +41,16 @@ public class GameBean implements Serializable {
     }
     
     public String correctGuess(){
-        ns = ns.getNumberService();
-        guessFound=true;
         newGame=true;
         quit=true;
         inputGuess=false;
+        guessFound=true;
         correct++;
         return null;
     }
     
     public String startGame(){
-        ns = ns.getNumberService();
+        ns.generateRandomAnswer();
         home=false;
         newGame=true;
         quit=true;
@@ -60,7 +59,7 @@ public class GameBean implements Serializable {
     }
     
     public String quitGame(){
-        
+        result="";
         home=true;
         newGame=false;
         quit=false;
@@ -70,9 +69,9 @@ public class GameBean implements Serializable {
     
     public String submitGuess(){
         switch(ns.processGuess(guess)){
-            case -1: result = GUESS_LOW; wrongGuess();
-            case 0: result = GUESS_CORRECT; correctGuess();
-            case 1: result = GUESS_HIGH; wrongGuess();
+            case -1: result = GUESS_LOW; wrongGuess(); break;
+            case 0: result = GUESS_CORRECT; correctGuess(); break;
+            case 1: result = GUESS_HIGH; wrongGuess(); break;
         }
         return null;
     }

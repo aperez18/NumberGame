@@ -6,15 +6,14 @@ public class NumberService implements Serializable {
     private int answer;
     
     public NumberService(){
-        answer = 1 + (int)(Math.random() * ((10 - 1) + 1));
     }
     
     public NumberService getNumberService(){
         return new NumberService();
     }
     
-    public int getAnswer(){
-        return answer;
+    public void generateRandomAnswer(){
+        answer = 1 + (int)(Math.random() * ((10 - 1) + 1));
     }
     
     public int processGuess(int guess){
