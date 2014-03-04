@@ -1,6 +1,7 @@
 package managed.bean;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -10,6 +11,7 @@ import model.NumberService;
 @SessionScoped
 public class GameBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private final String GUESS_HIGH = "Your guess was too high.";
     private final String GUESS_LOW = "Your guess was too low.";
     private final String GUESS_CORRECT = "Congratulations, you guessed correct!";
@@ -30,6 +32,10 @@ public class GameBean implements Serializable {
      * Creates a new instance of GameBean
      */
     public GameBean() {
+    }
+    
+    @PostConstruct
+    public void init(){
         incorrect=0;
         correct=0;
     }
