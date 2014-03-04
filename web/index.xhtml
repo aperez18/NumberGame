@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Guessing Game</title>
+    </h:head>
+    <h:body>
+        <h:form id="gameForm">
+            <h:outputText id="welcomeText" style="font-size: x-large; color: blue;" value="Welcome to the number guessing game!"/><br/>
+            <h:commandButton id="startGame" rendered="#{gameBean.home}" value="New Game?" action="#{gameBean.startGame()}"/><br/>
+            <h:outputText id="instructions" rendered="#{gameBean.newGame}" value="Guess the secret number between 1 and 10 to win."/><br/>
+            <h:outputText id="result" rendered="#{gameBean.guessFound}" value="#{gameBean.result}"/><br/>
+            <h:outputText id="guessLbl" rendered="#{gameBean.inputGuess}" style="font-weight: bold;" value="Guess: "/>
+            <h:inputText id="guess" rendered="#{gameBean.inputGuess}" value="#{gameBean.guess}" required="true" requiredMessage="Enter a number 1-10"/><br/>
+            <h:commandButton id="submitBtn" rendered="#{gameBean.inputGuess}" value="Submit Guess" action="#{gameBean.submitGuess()}"/>
+            <h:commandButton id="quitBtn" rendered="#{gameBean.quit}" value="Quit" action="#{gameBean.quitGame()}"/><br/>
+            <h:outputText id="wrongLbl" rendered="#{gameBean.newGame}" value="Wrong: " style="font-weight: bold;"/>
+            <h:outputText id="wrongCount" rendered="#{gameBean.newGame}" value="#{gameBean.incorrect}" style="color: red;"/>
+            <h:outputText id="correctLbl" rendered="#{gameBean.newGame}" value="Correct: " style="font-weight: bold;"/>
+            <h:outputText id="winCount" rendered="#{gameBean.newGame}" value="#{gameBean.correct}" style="color: #00cc00;"/>
+        </h:form>
+    </h:body>
+</html>
+
